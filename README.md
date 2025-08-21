@@ -87,7 +87,7 @@ Verify with `python3 --version`
 2. Open terminal/command prompt in that folder
 3. Run the script:
    ```bash
-   python drone_coordinate_converter.py
+   python calculation.py
    ```
    (On Mac/Linux you might need `python3` instead of `python`)
 
@@ -129,29 +129,8 @@ Your solution is complete when:
 - [ ] All unit tests pass
 - [ ] Integration test passes
 - [ ] `show_drone_locations()` uses your helper function
-- [ ] Code is readable with good variable names
-- [ ] No repetitive/duplicate code remains
 
 ### Example of Good Output
-
-When working correctly, you should see output like:
-
-```
-Drone GPS Locations
-==================
-Drone 1:
-  GPS: (37.77, -122.41)
-  Latitude:  37 degrees 46.2 minutes North
-  Longitude: 122 degrees 24.6 minutes West
-```
-
-### Tips
-
-- **Read the existing code carefully** - understand what it's trying to do
-- **Start with the helper function** - get the tests passing first
-- **Test frequently** - run the script after each change
-- **Use descriptive variable names** - `latitude` instead of `x`
-- **Keep it simple** - avoid overly complex logic
 
 ## Step 7: Commit and Push Your Changes
 
@@ -167,7 +146,7 @@ Drone 1:
 
 ```bash
 git add .
-git commit -m "Implement helper function and refactor coordinate conversion"
+git commit -m "Some commit message here"
 git push origin main
 ```
 
