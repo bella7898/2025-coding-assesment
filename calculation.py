@@ -23,7 +23,25 @@ def convert_to_readable_format(coordinate, is_latitude):
     - A string with the readable format
     """
     # Your code here
-    pass
+    abs_value = abs(coordinate)
+
+    if is_latitude: 
+        if coordinate >= 0: 
+            direction = "North"
+        else: 
+            direction = "South"
+    else: 
+        if coordinate >= 0: 
+            direction = "East"
+        else: 
+            direction = "West"
+
+    whole_num = int(abs_value)
+    decimal_value = abs_value - whole_num
+    minutes = 60*decimal_value
+
+    result = f"{whole_num} degrees {minutes:.1f} minutes {direction}"
+    return result
 
 def show_drone_locations():
     """Show where the drones are located"""
@@ -31,67 +49,28 @@ def show_drone_locations():
     """
     TODO: Refactor this code where needed! Hint: DRY
     """
-    
+
     # GPS coordinates for drone locations
     places = [
         (37.77, -122.41),  # San Francisco
         (40.71, -74.00),   # New York
         (51.50, -0.12),    # London
     ]
-    
+   
     print("Drone GPS Locations")
     print("==================")
     
     for i in range(len(places)):
         x = places[i][0]
         y = places[i][1]
-        
-        # Work with latitude (x)
-        if x >= 0:
-            if x > 0:
-                dir1 = "North"
-                num1 = x
-            else:
-                dir1 = "North"
-                num1 = 0
-        else:
-            if x < 0:
-                dir1 = "South"
-                num1 = -x
-            else:
-                dir1 = "South"
-                num1 = 0
-        
-        # Get the whole number part
-        big_part1 = int(num1)
-        leftover1 = num1 - big_part1
-        small_part1 = leftover1 * 60
-        
-        # Work with longitude (y)
-        if y >= 0:
-            if y > 0:
-                dir2 = "East"
-                num2 = y
-            else:
-                dir2 = "East"
-                num2 = 0
-        else:
-            if y < 0:
-                dir2 = "West"
-                num2 = -y
-            else:
-                dir2 = "West"
-                num2 = 0
-        
-        # Get the whole number part
-        big_part2 = int(num2)
-        leftover2 = num2 - big_part2
-        small_part2 = leftover2 * 60
+
+        lat_result = convert_to_readable_format(x, True)
+        long_result = convert_to_readable_format(y, False)
         
         print(f"Drone {i+1}:")
         print(f"  GPS: ({x}, {y})")
-        print(f"  Latitude:  {big_part1} degrees {small_part1:.1f} minutes {dir1}")
-        print(f"  Longitude: {big_part2} degrees {small_part2:.1f} minutes {dir2}")
+        print(f"  Latitude: {lat_result}")
+        print(f"  Longitude: {long_result}")
         print()
 
 def test_convert_to_readable_format():
